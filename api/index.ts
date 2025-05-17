@@ -1,8 +1,6 @@
 import { Hono } from "hono"
 import { handle } from "hono/vercel"
 import { execa } from "execa"
-import { resolve } from "node:path"
-import { fileURLToPath } from "node:url"
 
 export const runtime = "nodejs"
 
@@ -39,16 +37,15 @@ app.post("/parse", async (c) => {
   }
 
   try {
-    // const { stdout, stderr } = await execa("npx", [
-    //   "single-file-cli",
-    //   url,
-    //   "--dump-content",
-    // ])
+    // 获取 single-file-cli 的入口文件路径
+    const cliPath = require.resolve("single-file-cli/single-file-node.js")
 
-    const { stdout, stderr } = await execa(
-      resolve(fileURLToPath(new URL(".", import.meta.url)), "../node_modules/.bin/single-file"),
-      [url, "--dump-content"]
-    )
+    // 用 node 执行 CLI
+    const { stdout, stderr } = await execa("node", [
+      cliPath,
+      url,
+      "--dump-content",
+    ])
 
     if (stderr) {
       throw new Error(stderr)
