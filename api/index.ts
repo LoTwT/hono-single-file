@@ -1,6 +1,9 @@
 import { Hono } from "hono"
 import { handle } from "hono/vercel"
 import { execa } from "execa"
+import { createRequire } from "node:module"
+
+const require = createRequire(import.meta.url)
 
 export const runtime = "nodejs"
 
