@@ -1,6 +1,6 @@
 import { Hono } from "hono"
 import { handle } from "hono/vercel"
-import { execa } from "execa"
+import { execaNode } from "execa"
 import { createRequire } from "node:module"
 
 const require = createRequire(import.meta.url)
@@ -44,11 +44,7 @@ app.post("/parse", async (c) => {
     const cliPath = require.resolve("single-file-cli/single-file-node.js")
 
     // 用 node 执行 CLI
-    const { stdout, stderr } = await execa("node", [
-      cliPath,
-      url,
-      "--dump-content",
-    ])
+    const { stdout, stderr } = await execaNode(cliPath, [url, "--dump-content"])
 
     if (stderr) {
       throw new Error(stderr)
