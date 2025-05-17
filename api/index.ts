@@ -13,7 +13,7 @@ app.get("/", (c) => {
     `<html>
       <body>
         <form action="/api/parse" method="post">
-          <label for="url">URL:</label>
+          <label for="url">target URL: </label>
           <input type="text" name="url" />
           <button type="submit">Send</button>
         </form>
