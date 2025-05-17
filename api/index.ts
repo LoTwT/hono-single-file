@@ -36,17 +36,21 @@ app.post("/parse", async (c) => {
     })
   }
 
-  const { stdout, stderr } = await execa("npx", [
-    "single-file-cli",
-    url,
-    "--dump-content",
-  ])
+  try {
+    const { stdout, stderr } = await execa("npx", [
+      "single-file-cli",
+      url,
+      "--dump-content",
+    ])
 
-  if (stderr) {
-    return c.json({ msg: stderr })
+    if (stderr) {
+      throw new Error(stderr)
+    }
+
+    return c.json({ msg: "ok", parsed: stdout })
+  } catch (error: any) {
+    return c.json({ msg: error?.message || "unknown error" })
   }
-
-  return c.json({ msg: "ok", parsed: stdout })
 })
 
 const handler = handle(app)
