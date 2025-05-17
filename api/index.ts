@@ -1,6 +1,8 @@
 import { Hono } from "hono"
 import { handle } from "hono/vercel"
 import { execa } from "execa"
+import { resolve } from "node:path"
+import { fileURLToPath } from "node:url"
 
 export const runtime = "nodejs"
 
@@ -44,7 +46,7 @@ app.post("/parse", async (c) => {
     // ])
 
     const { stdout, stderr } = await execa(
-      "./node_modules/.bin/single-file",
+      resolve(fileURLToPath(new URL(".", import.meta.url)), "../node_modules/.bin/single-file"),
       [url, "--dump-content"]
     )
 
