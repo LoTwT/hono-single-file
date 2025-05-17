@@ -2,6 +2,8 @@ import { Hono } from "hono"
 import { handle } from "hono/vercel"
 import { execa } from "execa"
 
+export const runtime = "nodejs"
+
 const app = new Hono().basePath("/api")
 
 app.get("/", (c) => {
