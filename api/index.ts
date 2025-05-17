@@ -8,7 +8,7 @@ const app = new Hono().basePath("/api")
 
 app.get("/", (c) => {
   return c.html(
-    <html>
+    `<html>
       <body>
         <form action="/api/parse" method="post">
           <label for="url">URL:</label>
@@ -16,7 +16,7 @@ app.get("/", (c) => {
           <button type="submit">Send</button>
         </form>
       </body>
-    </html>
+    </html>`
   )
 })
 
