@@ -37,11 +37,16 @@ app.post("/parse", async (c) => {
   }
 
   try {
-    const { stdout, stderr } = await execa("npx", [
-      "single-file-cli",
-      url,
-      "--dump-content",
-    ])
+    // const { stdout, stderr } = await execa("npx", [
+    //   "single-file-cli",
+    //   url,
+    //   "--dump-content",
+    // ])
+
+    const { stdout, stderr } = await execa(
+      "./node_modules/.bin/single-file",
+      [url, "--dump-content"]
+    )
 
     if (stderr) {
       throw new Error(stderr)

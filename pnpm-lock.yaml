@@ -14,6 +14,9 @@ importers:
       hono:
         specifier: ^4.7.10
         version: 4.7.10
+      single-file-cli:
+        specifier: ^2.0.75
+        version: 2.0.75
     devDependencies:
       vercel:
         specifier: ^41.7.8
@@ -893,6 +896,15 @@ packages:
     resolution: {integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==}
     engines: {node: '>=14'}
 
+  simple-cdp@1.8.6:
+    resolution: {integrity: sha512-c33zKvBOOIBfdfDCr++N8Dv6kY03wD+cGuu3MEiBJHC4LtHE5aSwjw5E+dOSeuXolS+8MoDzYuWrJdT+IFp8bw==}
+    engines: {bun: '>=1.0', deno: '>=1.4'}
+
+  single-file-cli@2.0.75:
+    resolution: {integrity: sha512-LA8p/s7sVXkfCXFZ0P7ivDrJ8f1GdgOUcxCPBjwtC1S6bmVakTVai4fCGeujKvUfl/ee8fZQd52DURIGYNtPXQ==}
+    engines: {bun: '>=1.0', deno: '>=1.4', node: '>=20'}
+    hasBin: true
+
   stat-mode@0.3.0:
     resolution: {integrity: sha512-QjMLR0A3WwFY2aZdV0okfFEJB5TRjkggXZjxP3A1RsWsNHNu3YPv8btmtc6iCFZ0Rul3FE93OYogvhOUClU+ng==}
 
@@ -1035,6 +1047,18 @@ packages:
 
   wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
+
+  ws@8.18.2:
+    resolution: {integrity: sha512-DMricUmwGZUVr++AEAe2uiVM7UoO9MAVZMDu05UQOaUII0lp+zOzLLU4Xqh/JvTqklB1T4uELaaPBKyjE1r4fQ==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
 
   xdg-app-paths@5.1.0:
     resolution: {integrity: sha512-RAQ3WkPf4KTU1A8RtFx3gWywzVKe00tfOPFfl2NDGqbIFENQO4kqAJp7mhQjNj/33W5x5hiWWUdyfPq/5SU3QA==}
@@ -1882,6 +1906,16 @@ snapshots:
 
   signal-exit@4.1.0: {}
 
+  simple-cdp@1.8.6: {}
+
+  single-file-cli@2.0.75:
+    dependencies:
+      simple-cdp: 1.8.6
+      ws: 8.18.2
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
   stat-mode@0.3.0: {}
 
   statuses@1.5.0: {}
@@ -2045,6 +2079,8 @@ snapshots:
       strip-ansi: 7.1.0
 
   wrappy@1.0.2: {}
+
+  ws@8.18.2: {}
 
   xdg-app-paths@5.1.0:
     dependencies:

@@ -6,7 +6,8 @@
   },
   "dependencies": {
     "execa": "^9.5.3",
-    "hono": "^4.7.10"
+    "hono": "^4.7.10",
+    "single-file-cli": "^2.0.75"
   },
   "devDependencies": {
     "vercel": "^41.7.8"
