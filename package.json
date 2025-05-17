@@ -1,0 +1,16 @@
+{
+  "name": "hono-single-file",
+  "scripts": {
+    "start": "vercel dev",
+    "deploy": "vercel"
+  },
+  "dependencies": {
+    "hono": "^4.7.10",
+    "execa": "^9.5.3"
+  },
+  "devDependencies": {
+    "vercel": "^32.4.1"
+  },
+  "packageManager": "pnpm@10.11.0",
+  "type": "module"
+}
